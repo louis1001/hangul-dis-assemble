@@ -18,7 +18,7 @@ private extension Character {
     }
 }
 
-enum Hangul {
+public enum Hangul {
     fileprivate static func appendGrouping(
         _ grouping: JungJongGrouping,
         to array: inout [String]
@@ -31,7 +31,7 @@ enum Hangul {
         }
     }
     
-    static func disassembleGrouped(_ word: String) -> [[String]] {
+    public static func disassembleGrouped(_ word: String) -> [[String]] {
         let length = word.count
         var result: [[String]] = []
         for i in 0..<length {
@@ -70,7 +70,7 @@ enum Hangul {
         return result
     }
     
-    static func disassemble(_ word: String) -> [String] {
+    public static func disassemble(_ word: String) -> [String] {
         let grouped = disassembleGrouped(word)
         var result: [String] = []
         for group in grouped {
@@ -80,7 +80,7 @@ enum Hangul {
         return result
     }
     
-    static func disassembleToString(_ word: String) -> String {
+    public static func disassembleToString(_ word: String) -> String {
         let dis = disassemble(word)
         return dis.joined()
     }
@@ -206,7 +206,7 @@ fileprivate extension Hangul {
     static let COMPLEX_VOWELS_HASH = makeComplexHash(COMPLEX_VOWELS)
 }
 
-fileprivate extension Hangul {
+public extension Hangul {
     static func isConsonant(_ char: Int) -> Bool {
         return CONSONANTS_HASH[char] != nil
     }
